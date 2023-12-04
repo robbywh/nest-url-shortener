@@ -45,6 +45,3 @@ export class UrlService {
     return `This action removes a #${id} url`;
   }
 }
-function nanoid(arg0: number) {
-  throw new Error('Function not implemented.');
-}
