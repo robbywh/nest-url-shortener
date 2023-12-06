@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nestjs_postgres_test:
     image: postgres:alpine
-    container_name: test_postgres
+    container_name: nestjs_url_shortener_test_postgres
     restart: 'no'
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U $POSTGRES_USER']
@@ -18,20 +18,20 @@ services:
     ports:
       - '5444:5432' # Different port to avoid conflict with the development environment
     volumes:
-      - nestjs_postgres_test:/var/lib/postgresql/data
+      - nestjs_url_shortener_postgres_test:/var/lib/postgresql/data
 
-  nestjs_redis_test:
+  nestjs_url_shortener_redis_test:
     image: redis:alpine
-    container_name: test_redis
+    container_name: nestjs_url_shortener_test_redis
     ports:
       - '6380:6379' # Different port to avoid conflict with the development environment
     volumes:
-      - nestjs_redis_test:/data
+      - nestjs_url_shortener_redis_test:/data
 
 networks:
   default:
-    name: nestjs_starter_test
+    name: nestjs_url_shortener_test
 
 volumes:
-  nestjs_postgres_test:
-  nestjs_redis_test:
+  nestjs_url_shortener_postgres_test:
+  nestjs_url_shortener_redis_test:
